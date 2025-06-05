@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>〇〇大学 〇〇研究室 自己紹介</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <title>自己紹介ページ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
     <header>
-        <h1>〇〇大学 〇〇研究室 〇〇（あなたの名前）</h1>
+        <h1>自己紹介ページ</h1>
     </header>
 
     <nav>
         <ul>
             <li><a href="#profile">自己紹介</a></li>
-            <li><a href="#research">研究内容</a></li>
+            <li class="dropdown">
+                <a href="#research" id="research-link">研究内容</a>
+                <ul class="dropdown-menu" id="research-dropdown" style="display:none;">
+                    <li><a href="#undergraduate">廃炉措置高所除染遠隔操作ロボットの操作システム開発</a></li>
+                    <li><a href="#advanced">複数ロボット連携による放射線源の3次元環境地図への反映</a></li>
+                    <li><a href="#graduate">医療部品の自動組立システム開発</a></li>
+                </ul>
+            </li>
             <li><a href="#publications">業績</a></li>
             <li><a href="#links">リンク</a></li>
         </ul>
@@ -22,48 +30,132 @@
     <main>
         <section id="profile">
             <h2>自己紹介</h2>
-            <p>ここにあなたの自己紹介を記述します。所属、専門分野、趣味など。</p>
-<!--             <img src="profile_picture.jpg" alt="あなたの写真" width="200"> </section>
- -->
+            <p>　高等専門学校から現在に至るまで、主にロボットの制御やその応用に関する研究開発に取り組んでいます。</p>
+            <p>　高専本科では、研究室のチームで廃炉創造ロボコンに参加しました。その中で私は、ROSを用いたセンサー制御システムの開発と、UnityによるUI設計を担当し、ROSとUnityの連携システムを構築しました。</p>
+            <p>　続く高専専攻科では、二つの研究活動に注力しました。一つは、本科から継続して廃炉創造ロボコンへの挑戦です。専攻科では、これまでの経験を活かし、さらに高度なシステムの開発、より直感的なUIを設計し、ロボットの操縦性向上に尽力しました。<br>
+            　もう一つは、福島第一原発の廃炉作業円滑化を目指した放射線源マッピング技術の開発です。複数ロボット連携により放射線源を3次元環境地図へ反映するシステムをROS2基盤で構築し、SLAM、点群処理、経路計画等のアルゴリズムを統合。実機実験でその有効性を実証しました。</p>
+            <p>　現在は、東北大学大学院に在籍し、耳科領域で使用される精密な手術器具部品の自動組立システムに関する研究に注力しています。ロボットアームやディスペンサーを精密に制御することで、微細部品の搬送から接着剤の塗布に至る一連の工程を自動化することを目指しており、精密作業における自動化技術と、医療という異分野の知見を深めています。</p>
+
         <section id="research">
             <h2>研究内容</h2>
-            <h3>研究テーマ: 〇〇〇〇に関する研究</h3>
-            <p>ここに研究の背景、目的、手法、現在の進捗などを記述します。</p>
-            <p>図やグラフなども画像として挿入できます。</p>
-            <img src="research_figure1.png" alt="研究の図1">
+            <h3 id="undergraduate">廃炉措置高所除染遠隔操作ロボットの操作システム開発<br>(高専本科～専攻科)</h3>
+            <p>　本研究では、以下に示す高所除染遠隔操作ロボットを動作させる際に、周囲の状況やロボットの動作状態をオペレータが直感的に把握することを可能とする操作システム及びUIの開発を目的とする。</p>
+            
+            <figure class="center-img">
+                <img src="research_figure1.png" alt="作製したロボット">
+                <figcaption>図1: 作製したロボット</figcaption>
+            </figure>
+
+            <p>　本研究では、以下に示すロボットを動作させ、高所除染作業を行う際に、適切な動作を行い、周囲の状況やロボットの動作状態をオペレータが直感的に把握することを可能とする操作システム及びユーザインタフェースの開発を目的とする。</p>
+
+            <h3 id="advanced">複数ロボット連携による放射線源の3次元環境地図への反映<br>(専攻科)</h3>
+            <p>　この研究では、福島第一原子力発電所の廃炉作業円滑化を目的とした、放射線源マッピングシステムを開発した。具体的には、高精度かつ環境色を付与された3次元環境地図の生成手法、複数ロボットの同時制御に向けたナビゲーション管制システム、ロボットによる複数地点での放射線計測データを統合し、汚染部位を特定・可視化するシステムを開発した。<br>
+            　開発したシステムの概要を以下に示す。親機は3次元環境地図を生成するとともに、搭載検出器により簡易的なヒートマップを生成し、汚染部位を大まかに特定できるようにする。
+            子機は自身の3D-LiDARスキャンデータと親機が生成した環境地図を参照照合することで自己位置を推定するとともに、指定された位置へ自律移動する。
+            そして、子機に搭載された検出器のデータを基に汚染部位を可視化し、その位置を特定する。
+            以上のシステムをROS2をベースに開発し、小型で不整地対応能力の高いヘキサポッドロボット(株式会社シマノ製、Loiter2020_ver1.1)を用いて検証する。
+            </p>
+            <figure class="center-img">
+                <img src="image/system_config.png" alt="システム構成">
+                <figcaption>システム構成</figcaption>
+            </figure>
+            <figure class="center-img">
+                <img src="image/loiter.png" alt="ヘキサポッドロボット">
+                <figcaption>ヘキサポッドロボット</figcaption>
+            </figure>
+            <p>　検証のため、研究室の実験環境にて反映実験を行った。</p>
+            <h4>3次元環境地図の生成</h4>
+                <p>　3次元環境地図の生成には、3D-LiDARと慣性センサを用いて、移動ロボットの軌跡推定と3次元地図生成をリアルタイムで実現するフレームワークであるLIO-SAMを使用した。<br>
+                　生成3次元環境地図は座標データのみの点群で構成されており、そのままプロットしても視認性に乏しい。そのため、ロボットに標準搭載の深度カメラのRGB付き点群データをロボットの移動軌跡上に順次座標変換しプロットしていくことで環境色を付与した。<br>
+            
+            <h4>簡易的なヒートマップ生成</h4>
+                <p>　ロボットに搭載した放射線検出器からは、入射した放射線のカウント数データをリアルタイムで収集可能である。このデータを数秒ごとに区切り、カウント数の変化率に応じて色相を変化させ、ロボットの移動軌跡上に表示することで簡易ヒートマップを生成できるようにした。<br>
+                　この機能により、放射線源に近い場所で色相が変化し、汚染部位の大まかな特定に役立つことが確認できる。</p>
+                <figure class="center-img">
+                    <img src="image/heat_map.png" alt="簡易ヒートマップ">
+                    <figcaption>簡易ヒートマップ</figcaption>
+                </figure>
+
+            <h4>ナビゲーション管制システム</h4>
+                <p>　ナビゲーション管制システムは、移動ロボットを目的地まで誘導するための経路計画、自己位置推定、障害発生時の回復動作など、ロボットの行動に関わる包括的なナビゲーション機能を提供するシステムツールであるNavigation2をベースに開発した。<br>
+                　子機の自己位置推定は汚染部位の特定において高い精度が求められる。しかし、Navigation2に標準搭載されている自己位置推定手法は、2次元点群を用いる確率的手法であるため、3次元環境における精度不足が懸念される。そこで、本システムでは、3次元空間にも適用可能なNDT(Normal Distribution Transform)アルゴリズムを用いて子機の自己位置を推定する方針を採用した。<br>
+                　以下にロボットの自律ナビゲーションによる移動実験の結果を示す。ロボットは適切な経路で目標地点までナビゲーションできたことを確認できる。</p>
+
+                <video src="video/nav2_demo.mp4" controls></video>
+                <br>
+
+            <h4>3次元環境地図上への線源位置反映</h4>
+                <p>　3次元環境地図上の線源と思われる部位にマーキングをするには、子機の自己位置とロボットから見た放射線源の方位情報を用いる。<br>
+                　実験には過去に計測された模擬計測データを使用する。放射線計測データは検出器より方位角、仰角10度ごとの線源の存在確率で得られる。これを仮想天球面上で考えセグメント化し、計測結果の方位角、仰角を基軸とした点群探索円錐を作成、円錐内に含まれる点群に色付けすることで、点群ベースの環境地図に計測データを反映できるようにした。<br>
+                </p>
+                <figure class="center-img">
+                    <img src="image/radius_reflection_method.png" alt="線源位置反映手法">
+                    <figcaption>線源位置反映手法</figcaption>
+                </figure>
+
+                <p>この線源位置の反映を複数地点で実行すると、重複してマーキングされる点群が発生する。本システムでは、この重複点群のみを最終的な反映結果として色付けすることで、より精度の高い放射線源の可視化を図る。</p>
+                <figure class="center-img">
+                    <img src="image/radius_reflection_concept.png" alt="最終的な線源位置反映時の構想">
+                    <figcaption>最終的な線源位置反映時の構想</figcaption>
+                </figure>
+
+                <p>　複数ロボットによる線源位置マッピングを検証するため、研究室の実験環境にて反映実験を行った。
+                    以下に示すように、検出器の模擬計測データを基に放射線源を仮定し、その周囲にロボットを自律ナビゲーションすることで、模擬計測データ取得時の状況を再現する。
+                    なお、本研究では一台のロボットで実験を行うが、便宜上、ロボットの配置場所によって一号機、二号機、三号機と区別する。</p>
+
+                <figure class="center-img">
+                    <img src="image/experiment_environment.png" alt="実験環境等">
+                    <figcaption>実験環境等</figcaption>
+                </figure>
+
+                <p>　実験の結果、以下に示すように、放射線源の位置を3次元環境地図上に反映できたことを確認できた。<br>
+                </p>
+                <figure class="center-img">
+                    <img src="image/all_robot_reflection_result.png" alt="各ロボット位置からの反映結果">
+                    <figcaption>各ロボット位置からの反映結果</figcaption>
+                </figure>
+
+                <figure class="center-img">
+                    <img src="image/robot_reflection_result.png" alt="抽出処理後の線源位置反映結果">
+                    <figcaption>抽出処理後の線源位置反映結果</figcaption>
+                </figure>
+
+            <h3 id="graduate">医療部品の自動組立システム開発<br>(大学院)</h3>
+            <p>　この研究では、耳科領域で使用される精密な手術器具部品の自動組立システムを開発している。
+                Raspberry Pi 4Bを用いてロボットアーム、ディスペンサー、3Dプリンターを制御するプログラムを作製し、正確かつ迅速な自動組立システムの構築を目指す。</p>
         </section>
+
 
         <section id="publications">
             <h2>業績</h2>
             <h3>学術論文</h3>
             <ul>
-                <li>著者名, "論文タイトル", 掲載誌名, 巻号, pp.xxx-xxx, 発行年.</li>
+                <li>横井健人, 河田竜太郎, 金子慎一郎, "複数ロボット連携による放射線源の3次元環境地図への反映", ロボティクス・メカトロニクス講演会2024講演論文集, 2024.</li>
                 </ul>
             <h3>学会発表</h3>
             <ul>
-                <li>発表者名, "発表タイトル", 学会名, 開催地, 発表年月.</li>
+                <li>横井健人, "複数ロボット連携による放射線源の3次元環境地図への反映", ロボティクス・メカトロニクス講演会2024, 2024.</li>
                 </ul>
             <h3>受賞歴</h3>
             <ul>
-                <li>受賞名, 受賞年月日.</li>
+                <li>第8回廃炉創造ロボコン, 特別賞・東芝エネルギーシステムズ, 2023.</li>
+                <li>計測自動制御学会, 優秀学生賞, 2025.</li>
             </ul>
         </section>
 
         <section id="links">
             <h2>リンク</h2>
             <ul>
-<!--                 <li><a href="https://www.〇〇.ac.jp/" target="_blank">所属大学のウェブサイト</a></li>
-                <li><a href="https://〇〇-lab.〇〇.ac.jp/" target="_blank">研究室のウェブサイト</a></li>
-                <li><a href="https://scholar.google.com/citations?user=あなたのID" target="_blank">Google Scholar Citations</a></li>
-                <li><a href="https://researchmap.jp/あなたのID" target="_blank">researchmap</a></li>
-                <li><a href="https://github.com/あなたのユーザー名" target="_blank">GitHubプロフィール</a></li> -->
+                <li><a href="http://www.medmems.bme.tohoku.ac.jp/" target="_blank">所属研究室</a></li>
+                <li><a href="https://github.com/yamatetuto" target="_blank">GitHubアカウント</a></li>
             </ul>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 あなたの名前</p>
+        <p>&copy; 2025 yamatetuto</p>
     </footer>
 
-<!--     <script src="script.js"></script> </body> -->
+    <script src="script.js"></script>
+</body>
 </html>

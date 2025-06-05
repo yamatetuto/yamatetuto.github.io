@@ -14,25 +14,106 @@ header {
     text-align: center;
 }
 
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    background-color: #444; /* 追加: nav自体に背景色を指定 */
+    width: 100vw;           /* 追加: 横幅いっぱいに */
+    position: sticky;    /* stickyで上部に固定 */
+    top: 0;
+    left: 0;             /* ここを0に */
+    right: 0;            /* ここを0に */
+    margin-left: 0;      /* ここを0に */
+    margin-right: 0;     /* ここを0に */
+    z-index: 1000;
+}
+
 nav ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    text-align: center;
-    background-color: #444;
+    margin: 0;
+    display: flex;
+    background-color: transparent; /* 修正: 背景色を透明に */
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 20px;
+    position: relative;
+    margin-right: 0; /* 項目間の隙間をなくす */
+    min-width: 120px;
+    text-align: center;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    display: block;                /* ブロック要素にして */
+    height: 100%;                  /* 親liの高さに合わせる */
+    padding: 16px 24px;            /* 上下左右に十分な余白 */
+    box-sizing: border-box;        /* パディングを含めて幅を計算 */
+    border-right: 1px solid rgba(255,255,255,0.15); /* 項目の区切り線 */
+}
+
+nav ul li:last-child a {
+    border-right: none;            /* 最後の項目は右線なし */
+}
+
+nav ul li a:active,
+nav ul li a:focus,
+nav ul li a:hover {
+    opacity: 1;
+    background: rgba(255,255,255,0.3); /* 背景が薄く白くなる */
+    color: #fff; /* 文字色は白のまま */
+    transition: background 0.2s, color 0.2s;
+}
+
+nav ul li .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    background: #fff;
+    border: 1px solid #ccc;
+    min-width: 180px;
+    max-width: 90vw;
+    box-sizing: border-box;
+    overflow-x: auto;
+    /* ドロップダウンが下に収まらない場合は上に表示 */
+    bottom: auto;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+nav ul li .dropdown-menu li {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li .dropdown-menu li a {
+    display: block;
+    padding: 8px 16px;
+    color: #333;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+nav ul li .dropdown-menu li a:active,
+nav ul li .dropdown-menu li a:focus,
+nav ul li .dropdown-menu li a:hover {
+    opacity: 1;
+    background: rgba(0,0,0,0.06); /* ドロップダウンは少しグレーがかる白 */
+    color: #222;
+    transition: background 0.2s, color 0.2s;
 }
 
 main {
     padding: 20px;
+    max-width: 1080px;   /* 最大幅を指定（例：900px） */
+    margin: 0 auto;     /* 中央寄せ */
+    min-height: 80vh;   /* 必要に応じて高さも調整 */
+    box-sizing: border-box;
 }
 
 section {
@@ -42,7 +123,7 @@ section {
     border-radius: 8px;
 }
 
-h1, h2, h3 {
+h2, h3 {
     color: #333;
 }
 
@@ -54,4 +135,37 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    max-height: 300px; /* ←最大幅を維持したい場合はこの行も残す */
+}
+
+.center-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 24px 0;
+}
+.center-img figcaption {
+    margin-top: 8px;
+    color: #555;
+    font-size: 0.95em;
+}
+/* .img-Landscape {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+} */
+
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    max-height: 400px; /* ←最大幅を維持したい場合はこの行も残す */
 }
