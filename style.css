@@ -161,7 +161,18 @@ img {
     width: 100%;
     height: auto;
 } */
-
+.img-row {
+    display: flex;
+    gap: 16px; /* 画像間の隙間 */
+    justify-content: center;
+    margin: 24px 0;
+}
+.img-row .img-half {
+    width: 48%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 video {
     max-width: 100%;
     height: auto;
