@@ -1,6 +1,6 @@
 // script.js - dropdown toggle and hide-on-scroll (vanilla JS)
 document.addEventListener("DOMContentLoaded", function () {
-  // dropdown toggle for "研究内容"
+  // dropdown toggle
   const researchLink = document.getElementById("research-link");
   const dropdown = document.getElementById("research-dropdown");
 
