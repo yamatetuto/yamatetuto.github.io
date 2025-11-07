@@ -12,6 +12,9 @@ header {
   color: #fff;
   padding: 1rem 0;
   text-align: center;
+  /* allow smooth hide/show on scroll */
+  transition: transform 0.24s ease, opacity 0.24s ease;
+  will-change: transform;
 }
 
 nav {
@@ -28,6 +31,8 @@ nav {
   margin-left: 0; /* ここを0に */
   margin-right: 0; /* ここを0に */
   z-index: 1000;
+  transition: transform 0.24s ease, opacity 0.24s ease;
+  will-change: transform;
 }
 
 nav ul {
@@ -96,6 +101,7 @@ nav ul li .dropdown-menu {
   bottom: auto;
   max-height: 60vh;
   overflow-y: auto;
+  z-index: 2000; /* ensure dropdown appears above nav/header/content */
 }
 
 nav ul li .dropdown-menu li {
@@ -149,6 +155,18 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+  transition: transform 0.24s ease, opacity 0.24s ease;
+  will-change: transform;
+}
+
+/* classes toggled by JS for hide-on-scroll behaviour */
+.is-hidden-top {
+  transform: translateY(-120%);
+  opacity: 0;
+}
+.is-hidden-bottom {
+  transform: translateY(120%);
+  opacity: 0;
 }
 
 img {
