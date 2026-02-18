@@ -23,7 +23,7 @@ nav {
   align-items: center;
   margin-bottom: 0;
   background-color: #444; /* 追加: nav自体に背景色を指定 */
-  width: 100vw; /* 追加: 横幅いっぱいに */
+  width: 100%; /* 修正: 100vwはスクロールバー幅を含むため100%に変更 */
   position: sticky; /* stickyで上部に固定 */
   top: 0;
   left: 0; /* ここを0に */
