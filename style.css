@@ -23,9 +23,7 @@ header {
 }
 
 nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   margin: 0;
   background-color: #444;
   width: 100%;
@@ -41,7 +39,7 @@ nav>ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 100%;
