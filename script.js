@@ -24,6 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const nav = document.querySelector("nav");
   const footer = document.querySelector("footer");
 
+  // offset body for fixed nav
+  if (nav) {
+    document.body.style.paddingTop = nav.offsetHeight + "px";
+  }
+
   let lastScroll = window.pageYOffset || document.documentElement.scrollTop;
   const threshold = 10; // ignore tiny scrolls
 

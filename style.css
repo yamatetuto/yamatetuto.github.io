@@ -24,8 +24,9 @@ nav {
   margin: 0;
   background-color: #444;
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   z-index: 1000;
   box-sizing: border-box;
   transition: transform 0.24s ease, opacity 0.24s ease;
