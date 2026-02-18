@@ -23,7 +23,9 @@ header {
 }
 
 nav {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0;
   background-color: #444;
   width: 100%;
@@ -31,7 +33,7 @@ nav {
   top: 0;
   z-index: 1000;
   box-sizing: border-box;
-  transition: transform 0.24s ease, opacity 0.24s ease, top 0.24s ease;
+  transition: transform 0.24s ease, opacity 0.24s ease;
   will-change: transform;
 }
 
@@ -40,6 +42,7 @@ nav>ul {
   padding: 0;
   margin: 0;
   display: inline-flex;
+  flex: 0 1 auto;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 100%;
@@ -185,11 +188,6 @@ footer {
 /* classes toggled by JS for hide-on-scroll behaviour */
 .is-hidden-top {
   transform: translateY(-120%);
-  opacity: 0;
-}
-
-nav.is-hidden-top {
-  top: -100px;
   opacity: 0;
 }
 
